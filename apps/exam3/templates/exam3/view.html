@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Viewing the job page</title>
+    <style>
+        .box1{
+            margin-left: 500px;
+            font-size: 30px;
+        }
+        .box2{
+            border: 2px solid black;
+            min-height: 100px;
+            max-width:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <a href="/dash">Back</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h2>{{my_job.title}}</h2>
+    <div class="box2">
+        {{my_job.desc}} 
+        <br>
+        {{my_job.location}}
+        <br>
+        Posted by:{{my_job.jobs.firstname}}
+    </div>
+    <h1><a href="/addingjob">Add To My Jobs</a></h1>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <form action="/submitjob" method="POST">
+        {% csrf_token %}
+        Title: <input type="text" name="title" id="">
+        Description: <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
+        location: <input type="text" name="location">
+        <input type="submit" name="Submit" value="Submit">
+    </form>
+    <div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

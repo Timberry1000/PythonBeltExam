@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box2{
+            margin-left: 700px;
+        }
+        table th{
+            border: 2px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+    <table>
+    <a href="/logout">logout</a>
+    <h1>Welcome {{request.session.firstname}}!</h1>
+    <a href="/addjob">Add A Job</a>
+        <tr class="th1">
+            <th>Job</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        {% for i in my_jobs %}
+        <tr>
+            <td>{{i.title}}</td>
+            <td>{{i.location}}</td>
+            <td><a href="/view/{{i.id}}">View</a> <a href="/addingjob/{{i.id}}">add</a> <a href="/edit/{{i.id}}">edit</a> <a href="/cancel/{{i.id}}">cancel</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+        {% for job in all_jobs %}
+        <td>{{job.title}}</td>
+        <td>{{job.location}}</td>
+        <td><a href="/view/{{job.id}}">View</a> <a href="/addingjob/{{job.id}}">add</a></td>
+        {% endfor %}
+        </tr>
+    </table>
+    
+
+
+    <table class="box2">
+        <tr>
+            <th>
+            My Jobs
+            </th>
+        </tr>
+        {% for job in my_jobs %}
+            <td>
+            {{job.title}} <a href="/view/{{job.id}}">view</a> <a href="/done/{{job.id}}">done</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            {% for job in joined  %}
+            <tr>
+                <td>
+                {{job.title}} <a href="/view/{{job.id}}">view</a> <a href="/done/{{job.id}}">done</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

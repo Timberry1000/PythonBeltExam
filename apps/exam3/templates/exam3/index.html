@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container{
+            display: inline-block;
+            vertical-align: top;
+        }
+        input{
+           display:block;
+        }
+        h1{
+           text-decoration: underline;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="container">
+            <div id="Reg">
+                <h1>Register</h1>
+                <form action="/reg" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="firstname" placeholder="First Name">
+                    <input type="text" name="lastname" placeholder="Last Name">
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="Confirm" placeholder="Confirm Password">
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+        <div id="container">
+            <div id="login">
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
