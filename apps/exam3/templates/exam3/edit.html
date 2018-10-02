@@ -16,10 +16,12 @@
     <h2><a href="/dash">Back</a> <a href="/logout">Logout</a></h2>
     </div>
     <h1>Edit Your Job Posting</h1>
-    <form action="/addi"></form>
-    Title : <input type="title" value="{{my_job.title}}">\
+    <form action="/editlogic" method="POST">
+        {% csrf_token %}
+    Title : <input type="title" value="{{my_job.title}}">
     Description: <input type="text" value="{{my_job.desc}}">
     Location: <input type="text" value="{{my_job.location}}">
     <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

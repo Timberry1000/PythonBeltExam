@@ -6,9 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        .box1{
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
+    <div class="box1">
+        <a href="/dash">Dash</a>
+        <a href="/logout">Logout</a>
+    </div>
     <form action="/submitjob" method="POST">
         {% csrf_token %}
         Title: <input type="text" name="title" id="">

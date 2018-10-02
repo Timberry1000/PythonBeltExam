@@ -50,6 +50,7 @@ def dash(request):
     if 'Reg_id' not in request.session:
         return redirect('/')
 
+    jobs = Job.objects.all().distinct().exclude(joins__id =request.session['Reg_id'])
     my_jobs = Job.objects.all().distinct().filter(jobs = request.session["Reg_id"]) 
     all_jobs = Job.objects.all().exclude(jobs = request.session["Reg_id"]) & Job.objects.all().exclude(joins__id = request.session['Reg_id'])
     joined_jobs = Job.objects.distinct().filter(joins__id = request.session['Reg_id'])
@@ -59,7 +60,8 @@ def dash(request):
     context = {
         'my_jobs': my_jobs,
         'all_jobs': all_jobs,
-        'joined': joined_jobs
+        'joined': joined_jobs,
+        'jobs': jobs
     }
     return render(request, 'exam3/dash.html', context)
 
@@ -114,8 +116,6 @@ def editlogic(request,id):
             job.location = request.POST['location']
             job.save()
     return redirect('/dash')
-
-
 
 """This will cancel/delete the selected job """
 def cancel(request,id):
