@@ -54,8 +54,7 @@ def dash(request):
     my_jobs = Job.objects.all().distinct().filter(jobs = request.session["Reg_id"]) 
     all_jobs = Job.objects.all().exclude(jobs = request.session["Reg_id"]) & Job.objects.all().exclude(joins__id = request.session['Reg_id'])
     joined_jobs = Job.objects.distinct().filter(joins__id = request.session['Reg_id'])
-    for i in my_jobs:
-        print(i.title)
+    
 
     context = {
         'my_jobs': my_jobs,
@@ -109,12 +108,12 @@ def editlogic(request,id):
         for error_message in errors:
             messages.add_message(request, messages.ERROR, error_message)
             return redirect('/edit/'+ id)
-        else:
-            job = Job.objects.get(id = id)
-            job.title = request.POST['title']
-            job.desc = request.POST['desc']
-            job.location = request.POST['location']
-            job.save()
+    else:
+        job = Job.objects.get(id = id)
+        job.title = request.POST['title']
+        job.desc = request.POST['desc']
+        job.location = request.POST['location']
+        job.save()
     return redirect('/dash')
 
 """This will cancel/delete the selected job """

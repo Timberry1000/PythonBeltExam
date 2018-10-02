@@ -16,12 +16,22 @@
     <h2><a href="/dash">Back</a> <a href="/logout">Logout</a></h2>
     </div>
     <h1>Edit Your Job Posting</h1>
-    <form action="/editlogic" method="POST">
+    <form action="/editlogic/{{my_job.id}}/" method="POST">
         {% csrf_token %}
-    Title : <input type="title" value="{{my_job.title}}">
-    Description: <input type="text" value="{{my_job.desc}}">
-    Location: <input type="text" value="{{my_job.location}}">
+    Title : <input type="text" name= "title" value="{{my_job.title}}">
+    Description: <input type="text" name = "desc" value="{{my_job.desc}}">
+    Location: <input type="text" name="location" value="{{my_job.location}}">
     <input type="submit" value="Submit">
     </form>
+
+    <div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </body>
 </html>
