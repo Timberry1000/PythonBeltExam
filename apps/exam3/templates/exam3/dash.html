@@ -25,7 +25,7 @@
             <th>Location</th>
             <th>Action</th>
         </tr>
-        {% for i in jobs %}
+        {% for i in my_jobs %}
         <tr>
             <td>{{i.title}}</td>
             <td>{{i.location}}</td>
@@ -33,13 +33,13 @@
             </td>
         </tr>
         {% endfor %}
-        <tr>
         {% for job in all_jobs %}
-        <td>{{job.title}}</td>
-        <td>{{job.location}}</td>
-        <td><a href="/view/{{job.id}}">View</a> <a href="/addingjob/{{job.id}}">add</a></td>
-        {% endfor %}
+        <tr>
+            <td>{{job.title}}</td>
+            <td>{{job.location}}</td>
+            <td><a href="/view/{{job.id}}">View</a> <a href="/addingjob/{{job.id}}">add</a></td>
         </tr>
+    {% endfor %}
     </table>
     
 
