@@ -52,7 +52,7 @@ def dash(request):
 
     jobs = Job.objects.all().distinct().exclude(joins__id =request.session['Reg_id'])
     my_jobs = Job.objects.all().distinct().filter(jobs = request.session["Reg_id"]).exclude(joins__id = request.session['Reg_id'])
-    all_jobs = Job.objects.all().exclude(jobs = request.session["Reg_id"]) & Job.objects.all().exclude(joins__id = request.session['Reg_id'])
+    all_jobs = Job.objects.all().exclude(jobs = request.session["Reg_id"]).exclude(joins__id = request.session['Reg_id'])
     joined_jobs = Job.objects.distinct().filter(joins__id = request.session['Reg_id'])
     
 

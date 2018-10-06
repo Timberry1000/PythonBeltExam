@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Viewing the job page</title>
     <style>
         .box1{
-            margin-left: 500px;
             font-size: 30px;
         }
-        .box2{
-            border: 2px solid black;
-            min-height: 100px;
-            max-width:200px;
+        body{
+            text-align: center;
         }
     </style>
 </head>
@@ -23,14 +21,19 @@
         <a href="/logout">Logout</a>
     </div>
 
-    <h2>{{my_job.title}}</h2>
-    <div class="box2">
-        {{my_job.desc}} 
-        <br>
-        {{my_job.location}}
-        <br>
-        Posted by:{{my_job.jobs.firstname}}
-    </div>
-    <h1><a href="/addingjob/{{my_job.id}}">Add To My Jobs</a></h1>
+    <h1>{{my_job.title}}</h1>
+    <table class="table-striped">           
+        <tr class="th1">
+            <th>Description</th>
+            <th>Location</th>
+            <th>Posted by</th>
+            <th>Action</th>
+        </tr>
+            <td>{{my_job.desc}}</td>
+            <td>{{my_job.location}}</td>
+            <td>{{my_job.jobs.firstname}}</td>
+            <td><a href="/addingjob/{{my_job.id}}">Add To My Jobs</a></td>
+        </tr>
+    </table>
 </body>
 </html>

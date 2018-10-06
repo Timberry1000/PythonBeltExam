@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Edit your job here</title>
-    <style>
-        .box1{
-            margin-left: 800px;
-        }
-    </style>
+    
 </head>
 <body>
-    <div class="box1">
     <h2><a href="/dash">Back</a> <a href="/logout">Logout</a></h2>
-    </div>
-    <h1>Edit Your Job Posting</h1>
     <form action="/editlogic/{{my_job.id}}/" method="POST">
         {% csrf_token %}
-    Title : <input type="text" name= "title" value="{{my_job.title}}">
-    Description: <input type="text" name = "desc" value="{{my_job.desc}}">
-    Location: <input type="text" name="location" value="{{my_job.location}}">
-    <input type="submit" value="Submit">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" name="title" class="form-control" value="{{my_job.title}}">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <input class="form-control" name="desc" value="{{my_job.desc}}" rows="3">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Location</label>
+            <input type="text" name="location" class="form-control" value="{{my_job.location}}" >
+        </div>
+        <input type="submit" name="submit" class="form-control" id="location" placeholder="Location">
     </form>
+   
 
     <div>
         {% if messages %}
